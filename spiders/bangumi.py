@@ -115,7 +115,7 @@ def get_all_infos_save():
         with open(f'infos/{year}.info.json', 'w') as f:
             json.dump(infos, f, ensure_ascii=False, indent=4)
         with open(f'failed/{year}.fail.json', 'w') as f:
-            json.dump(infos, f, ensure_ascii=False, indent=4)
+            json.dump(fails, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
