@@ -1,20 +1,13 @@
 import React from "react";
-import logo from '../assets/logo.png';
+import history from "../util/history";
 
-export default class AppHeader extends React.Component{
-    render(){
-        return (
-            <div style={{display: "flex", flexDirection: "row", height: "200px"}}>
-                <div style={{flexGrow: 2}}></div>
-                <div style={{
-                    flexGrow: 1,
-                    backgroundImage: "url(" + logo + ")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "contain",
-                    backgroundPosition: "center"
-                }}></div>
-                <div style={{flexGrow: 2}}></div>
-            </div>
-        )
-    }
+const AppHeader = () => {
+    return (
+        <div className="appheader-container" onClick={()=>{history.push("/")}}>
+            <div className="appheader-logo"/>
+            <div className="appheader-logo2"/>
+            <div className="appheader-right"/>
+        </div>
+    )
 }
+export default AppHeader;

@@ -1,4 +1,4 @@
-// 防抖函数
+// 防抖
 const debounce = (fn, delay) => {
     let timer = null
     return function() {

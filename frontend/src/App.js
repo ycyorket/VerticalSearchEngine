@@ -1,27 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from 'antd';
-import AppHeader from "./component/AppHeader";
 import './App.css';
 import 'antd/dist/antd.css';
-import SearchPage from "./page/SearchPage";
+import AppSearch from "./page/AppSearch";
+import UserAgreement from './page/UserAgreement';
+import Help from './page/Help';
+import Homepage from './page/Homepage';
 
-const { Content, Footer } = Layout;
+const { Content} = Layout;
 
 export default class App extends React.Component {
     render() {
         return (
           <Router>
             <Layout className="layout" style={{"minHeight": "100vh"}}>
-              <AppHeader history={this.history}/>
-              <Content style={{ padding: '20px 50px' }}>
+              <Content>
                   <Switch>
-                    <Route path="/">
-                      <SearchPage />
-                    </Route>
+                    <Route exact path="/" component={Homepage}/>
+                    <Route path="/search/:keyword" component={AppSearch}/>
+                    <Route path="/agreement" component={UserAgreement}/>
+                    <Route path="/help" component={Help}/>
                   </Switch>
               </Content>
-              <Footer style={{ textAlign: 'center' }}>LiveNive ©2021 Created by ZJU-ULSS-CD</Footer>
             </Layout>
           </Router>
         );

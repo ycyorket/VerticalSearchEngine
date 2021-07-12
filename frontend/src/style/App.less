@@ -1,0 +1,94 @@
+@import "Homepage/index.less";
+@import "AppSearch/index.less";
+@import "constant.less";
+
+.appheader-container{
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: @titlePink;
+    padding: 0.5ch;
+    .appheader-logo{
+        flex-grow: 1;
+        background-image: url('../asset/icon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+    .appheader-logo2{
+        flex-grow: 2;
+        background-image: url('../asset/logo.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+    .appheader-search{
+        flex-grow: 6;
+        display: flex;
+        align-items: center;
+    }
+    .appheader-right{
+        flex-grow: 7
+    }
+}
+
+.normal-footer{
+    color: @titlePink;
+}
+
+.light-footer{
+    color: white;
+}
+
+
+.appfooter{
+    text-align: center;
+    line-height: 2em;
+    background-color: inherit;
+    a{
+        padding: 0 1ch;
+        color: inherit;
+    }
+    a:hover{
+        color: @bilibiliBlue;
+        text-decoration: underline;
+    }
+}
+
+.pinkbackground{
+    width: 100vw;
+    height: 100vh;
+    background-color: @contentPink;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article{
+    padding: 0 5ch;
+    height: 70%;
+    h1{
+        font-size: 1.5rem;
+        line-height: 3em;
+        font-weight: bolder;
+    }
+    h2{
+        font-size: 1.3rem;
+        line-height: 2.7em;
+        font-weight: bold;
+    }
+    h2::before{
+        content: " · ";
+    }
+    h3{
+        font-size: 1.2rem;
+        line-height: 2em;
+    }
+    p, li{
+        font-size: 1rem;
+        line-height: 1.5em;
+    }
+    li{
+        padding: 0.5ch;
+    }
+}

@@ -1,0 +1,42 @@
+@import "../constant.less";
+
+.homepage{
+    width: 100vw;
+    height: 100vh;
+    background-color: @titlePink;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5vh 5vw;
+    .homepage-top{
+        background-image: url("../../../asset/cloud.png");
+        flex-grow: 1;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top left;
+    }
+
+    .homepage-mid{
+        flex-grow: 5;
+        display: flex;
+        flex-direction: column;
+        .homepage-logo{
+            background-image: url("../../../asset/logo.png");
+            flex-grow: 2;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+        .homepage-search{
+            flex-grow: 1;
+        }
+    }
+
+    .homepage-bot{
+        background-image: url("../../../asset/tree.png");
+        flex-grow: 3;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom right;
+    }
+}
