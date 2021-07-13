@@ -1,0 +1,5 @@
+Query:  东京 {'季度': '一月'}
+Recommend:  {'季度': '一月'}
+AssociatedWordSearch:  东京
+FuzzySearch:  东京
+FuzzySearch:  东京

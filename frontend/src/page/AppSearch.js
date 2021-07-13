@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import { useParams } from "react-router-dom";
 import SearchHeader from "../component/SearchHeader";
 import AppFooter from "../component/AppFooter";
+import defaultPoster from "../asset/default-poster.jpeg";
+import history from "../util/history";
 
 const Tag = (props) => {
     let [chosen, setChosen] = useState('全部');
@@ -10,15 +13,17 @@ const Tag = (props) => {
     const setTags = props.setTags;
     return (<div className="tag-container">
         <div className="tag-title">{type}</div>
-        {values.map(
-            (item)=>
-            <div key={name+'-'+item} className={item===chosen?"tag-item-chosen": "tag-item"} onClick={()=>{
-                setChosen(item);
-                const newTag = {};
-                newTag[name] = item;
-                setTags(newTag);
-            }}>{item}</div>
-            )}
+        <div className="tag-itemlist">
+            {values.map(
+                (item)=>
+                <div key={name+'-'+item} className={item===chosen?"tag-item-chosen": "tag-item"} onClick={()=>{
+                    setChosen(item);
+                    const newTag = {};
+                    newTag[name] = item;
+                    setTags(newTag);
+                }}>{item}</div>
+                )}
+        </div>
     </div>)
 }
 
@@ -39,7 +44,28 @@ const SortingBar = (props) => {
     })}</div>)
 }
 
-const AppSearch = (props) => {
+const ResultList = (props) => {
+    const allData = props.allData;
+    let i = 1;
+    return (<div className="result-list">{allData.map((item)=>{
+        i += 1;
+        return <div key={"poster"+i} className="result-item" onClick={()=>{history.push(`/anime/${item.id}`)}}>
+            <img className="result-poster" src={item.url} alt={item.title+"海报"}/>
+            <h4 className="result-title">{item.title}</h4>
+        </div>
+    })}</div>)
+}
+
+const BeforeSearch = () => {
+    return (<div className="searchpage-content">
+        <article className="searchpage-info">
+            <h2>请输入<strong>回车键</strong>以发起搜索</h2>
+        </article>
+    </div>)
+}
+
+const Searching = () => {
+    const allSortings = ["追番人数", "更新时间", "最高评分", "播放数量", "开播时间"];
     const allTags = [{
         type: '类型',
         name: 'type',
@@ -65,9 +91,6 @@ const AppSearch = (props) => {
         name: 'style',
         values: ['全部', '原创', '小说改', '漫画改', '游戏改']
     }, ];
-
-    const allSortings = ["追番人数", "更新时间", "最高评分", "播放数量", "开播时间"]
-
     let [tags, alterTags] = useState({
         type: '全部',
         region: '全部',
@@ -76,35 +99,36 @@ const AppSearch = (props) => {
         time: '全部',
         style: '全部'
     });
-
-    const entityTag = {
-        type: '番剧',
-        region: '日本',
-        status: '已完结',
-        season: '4月',
-        time: '2000年',
-        style: '漫画改'
-    }
-
-    const entity = {
+    let [entity, setEntity] = useState({
         type: "番剧",
         value: "工作细胞"
+    });
+    let [entityTag, setEntityTag] = useState({
+        type: '番剧',
+        region: '日本',
+        status: '完结',
+        season: '一月',
+        time: '2019年',
+        style: '漫画改'
+    })
+    const defaultResult = {
+        url: defaultPoster,
+        title: '工作细胞',
+        id: '2333'
     }
+    let [results, setResults] = useState([defaultResult, defaultResult, defaultResult, defaultResult, defaultResult, defaultResult, defaultResult, defaultResult, defaultResult])
 
-    const keyword = props.match.params.keyword;
     const setTags = (newTags) => {
-        alterTags({...tags, ...newTags})
+        alterTags({tags: {...tags, ...newTags}})
     }
 
-    return (<div className = "searchpage pinkbackground">
-        <SearchHeader keyword={keyword}/>
+    return (
         <div className="searchpage-content">
             <div className="searchpage-left">
                 <div className="searchpage-entitybar">
                     <div className="searchpage-entity">{entity.value}</div>
                     <div className="searchpage-entitytype">{entity.type}</div>
                 </div>
-                
                 <div className="searchpage-tagbar">
                     <div className="searchpage-tagbar-title">标签</div>
                     <div className="searchpage-tagbar-container">
@@ -117,7 +141,9 @@ const AppSearch = (props) => {
                 <div className="searchpage-sortbar">
                     <SortingBar allData={allSortings}></SortingBar>
                 </div>
-                <div className="searchpage-result"></div>
+                <div className="searchpage-resultbar">
+                    <ResultList allData={results}/>
+                </div>
             </div>
             <div className="searchpage-right">
                 <div className="searchpage-right-title">筛选</div>
@@ -129,8 +155,18 @@ const AppSearch = (props) => {
                 </div>
             </div>
         </div>
-        <AppFooter styleClass="normal-footer" />
-    </div>)
+    )
+}
+
+const AppSearch = () => {
+    let keyword = useParams().keyword || "";
+    return (<div className = "searchpage pinkbackground">
+            <SearchHeader keyword={keyword}/>
+            {keyword === "" && <BeforeSearch/>}
+            {keyword !== "" && <Searching/>}
+            <AppFooter styleClass="normal-footer" />
+        </div>)
+
 }
 
 export default AppSearch;

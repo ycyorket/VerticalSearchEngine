@@ -128,5 +128,5 @@ if __name__ == '__main__':
     if not os.path.exists('infos'):
         print('create directory "infos"')
         os.mkdir('infos')
-    # get_all_ids_save()
+    get_all_ids_save()
     get_all_infos_save()
