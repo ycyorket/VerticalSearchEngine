@@ -1,16 +1,19 @@
-@import "../constant.less";
+@import "constant.less";
 
 .searchpage{
     .searchpage-content{
         display: flex;
         flex-direction: row;
         min-height: 70%;
+        overflow: auto;
+        align-items: flex-start;
         .searchpage-left{
             flex-grow: 3;
             max-width: 60%;
             display: flex;
             flex-direction: column;
             padding: 4ch;
+            border-right: solid 0.2ch #ccc;
             .searchpage-entitybar{
                 background-color: @backgroundGrey;
                 padding: 1.3ch 2ch;
@@ -69,15 +72,31 @@
                 }
             }
 
-            .searchpage-result{
-                
+            .searchpage-resultbar{
+                .result-list{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    .result-item{
+                        padding: 2ch;
+                        max-width: 25%;
+                        .result-poster{
+                            width: 100%;
+                        }
+                        .result-title{
+                            line-height: 3em;
+                        }
+                    }
+                }
+                .result-list::after{
+                    content: "";
+                }
             }
         }
         .searchpage-right{
             padding: 5ch;
             flex-grow: 2;
             max-width: 40%;
-            border-left: solid 0.1ch #ccc;
             .searchpage-right-title{
                 color: #555;
                 font-size: larger;
@@ -91,23 +110,54 @@
                 line-height: 5ch;
                 .tag-container{
                     display: flex;
+                    flex-direction: row;
+                    align-items: baseline;
                     .tag-title{
                         font-weight: bolder;
                         color: grey;
                         padding-left: 2ch;
                         padding-right: 2ch;
+                        white-space: nowrap;
                     }
-                    .tag-item{
-                        color: grey;
-                        padding-left: 2ch;
-                        padding-right: 2ch;
-                    }
-                    .tag-item-chosen{
-                        color: @bilibiliBlue;
-                        padding-left: 2ch;
-                        padding-right: 2ch;
-                    }
+                    .tag-itemlist{
+                        display: flex;
+                        flex-flow: row wrap;
+                        .tag-item{
+                            color: grey;
+                            padding-left: 2ch;
+                            padding-right: 2ch;
+                        }
+                        .tag-item-chosen{
+                            color: @bilibiliBlue;
+                            padding-left: 2ch;
+                            padding-right: 2ch;
+                        }
+                    }    
                 }
+            }
+        }
+        .searchpage-info{
+            text-indent: 4ch;
+            h1{
+                font-weight: bolder;
+                font-size: x-large;
+                line-height: 2em;
+            }
+            h2{
+                color: @middleGrey;
+                font-weight: 900;
+                font-size: large;
+                line-height: 2em;
+            }
+            strong{
+                color: @highlightYellow;
+                font-weight: bolder;
+            }
+            strong::before{
+                content: " ";
+            }
+            strong::after{
+                content: " ";
             }
         }
     }
