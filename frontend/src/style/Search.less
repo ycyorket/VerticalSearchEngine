@@ -137,6 +137,8 @@
             }
         }
         .searchpage-info{
+            display: flex;
+            flex-direction: column;
             text-indent: 4ch;
             h1{
                 font-weight: bolder;
@@ -158,6 +160,32 @@
             }
             strong::after{
                 content: " ";
+            }
+            .recommendation{
+                max-width: 60%;
+                display: flex;
+                flex-direction: column;
+                .recommendation-title{
+                    font-weight: bold;
+                }
+                .recommendation-title::before{
+                    content: " ※ ";
+                }
+                .recommendation-content{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .recommendation-item{
+                        max-width: 20%;
+                        padding: 1ch;
+                        .recommendation-poster{
+                            width: 100%;
+                        }
+                        .recommendation-anime{
+                            line-height: 3em;
+                        }
+                    }
+                }
             }
         }
     }
