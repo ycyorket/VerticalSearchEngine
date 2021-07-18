@@ -1,0 +1,120 @@
+@import "constant.less";
+.animepage{
+    font-size: 1.2rem;
+    overflow: auto;
+    display: flex;
+    .animepage-left{
+        margin: 2ch;
+        .animepage-info{
+            background-color: @backgroundGrey;
+            display: flex;
+            .animepage-info-left{
+                margin: 0 0 2ch 2ch;
+                max-width: 42%;
+                padding: 1ch;
+                .animepage-poster{
+                    width: 100%;
+                }
+            }
+            .animepage-info-right{
+                margin: 0 0 2ch 0;
+                padding: 1ch;
+                .animepage-zhongwen{
+                    font-weight: bolder;
+                    font-size: 2rem;
+                    line-height: 2em;
+                }
+                .animepage-nihongo{
+                    color: @middleGrey;
+                    font-weight: bold;
+                }
+                .animepage-data{
+                    padding: 1.5ch 0;
+                    .animepage-datalist{
+                        display: flex;
+                        justify-content: center;
+                        .animepage-datum{
+                            border-right: 0.1ch solid black;
+                            font-weight: 600;
+                            flex: 1;
+                            .animepage-datum-updated{
+                                padding: 1ch 0;
+                                text-align: center;
+                                p{
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                        .animepage-datum:last-child{
+                            border: none !important;
+                        }
+                    }
+                }
+                .animepage-intro{
+                    padding: 0.5ch;
+                    color: @middleGrey;
+                }
+                .animepage-infos{
+                    margin-top: 1ch;
+                    .animepage-infolist{
+                        color: @titleGrey;
+                        font-weight: 500;
+                        list-style-type: square;
+                        .animepage-infolist-item::marker{
+                            font-size: 0.8em;
+
+                        }
+                    }
+                }
+            }
+        }
+        .animepage-recommendation{
+            margin-top: 1ch;
+            padding: 1ch;
+        }
+    }
+    .animepage-right{
+        margin: 2ch;
+        min-width: 40%;
+        .animepage-seiyuu{
+            background-color: @backgroundGrey;
+            margin: 0 2ch 2ch 2ch;
+            padding: 1ch 2ch;
+            .seiyuulist-title{
+                font-weight: bolder;
+                font-size: 2rem;
+                line-height: 2em;
+            }
+            .seiyuulist{
+                list-style-type: none;
+                text-align: 0;
+                padding-inline-start: 2ch;
+            }
+        }
+        .animepage-staff{
+            background-color: @backgroundGrey;
+            margin: 0 2ch 2ch 2ch;
+            padding: 1ch 2ch;
+            .stafflist-title{
+                font-weight: bolder;
+                font-size: 2rem;
+                line-height: 2em;
+            }
+            .stafflist{
+                list-style-type: none;
+                text-align: 0;
+                padding-inline-start: 2ch;
+            }
+        }
+    }
+}
+
+.animepage-expand{
+    text-align: center;
+    color: @middleGrey;
+    cursor: pointer;
+}
+
+.nocontent-info{
+    text-indent: 2ch;
+}

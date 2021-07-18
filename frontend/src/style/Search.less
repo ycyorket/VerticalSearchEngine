@@ -1,6 +1,7 @@
 @import "constant.less";
 
 .searchpage{
+    font-size: 1.2rem;
     .searchpage-content{
         display: flex;
         flex-direction: row;
@@ -13,7 +14,7 @@
             display: flex;
             flex-direction: column;
             padding: 4ch;
-            border-right: solid 0.2ch #ccc;
+            border-right: solid 0.2ch @seperationGrey;
             .searchpage-entitybar{
                 background-color: @backgroundGrey;
                 padding: 1.3ch 2ch;
@@ -53,21 +54,26 @@
                     display: flex;
                     .sortingbox{
                         color: grey;
-                        padding: 0 1ch;
+                        margin: 0 1ch;
+                        cursor: pointer;
                     }
                     .sortingbox-ascend{
                         color: @chosenBlue;
-                        padding: 0 1ch;
+                        margin: 0 1ch;
+                        cursor: pointer;
                     }
                     .sortingbox-ascend::after {
                         content: "↑";
+                        cursor: pointer;
                     }
                     .sortingbox-descend{
                         color: @chosenBlue;
-                        padding: 0 1ch;
+                        margin: 0 1ch;
+                        cursor: pointer;
                     }
                     .sortingbox-descend::after {
                         content: "↓";
+                        cursor: pointer;
                     }
                 }
             }
@@ -98,7 +104,7 @@
             flex-grow: 2;
             max-width: 40%;
             .searchpage-right-title{
-                color: #555;
+                color: @titleGrey;
                 font-size: larger;
                 font-weight: bolder;
                 line-height: 7ch;
@@ -124,13 +130,15 @@
                         flex-flow: row wrap;
                         .tag-item{
                             color: grey;
-                            padding-left: 2ch;
-                            padding-right: 2ch;
+                            margin-left: 2ch;
+                            margin-right: 2ch;
+                            cursor: pointer;
                         }
                         .tag-item-chosen{
                             color: @bilibiliBlue;
-                            padding-left: 2ch;
-                            padding-right: 2ch;
+                            margin-left: 2ch;
+                            margin-right: 2ch;
+                            cursor: pointer;
                         }
                     }    
                 }
@@ -163,29 +171,6 @@
             }
             .recommendation{
                 max-width: 60%;
-                display: flex;
-                flex-direction: column;
-                .recommendation-title{
-                    font-weight: bold;
-                }
-                .recommendation-title::before{
-                    content: " ※ ";
-                }
-                .recommendation-content{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    .recommendation-item{
-                        max-width: 20%;
-                        padding: 1ch;
-                        .recommendation-poster{
-                            width: 100%;
-                        }
-                        .recommendation-anime{
-                            line-height: 3em;
-                        }
-                    }
-                }
             }
         }
     }

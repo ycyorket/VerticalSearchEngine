@@ -40,6 +40,7 @@ def fuzzy_search():
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # todo: done
 @app.route('/getAnimeInfo', methods=["POST", 'OPTIONS'])
 @cross_origin()
@@ -54,6 +55,19 @@ def get_anime_info():
 
 =======
 >>>>>>> 5a91d19 (增加了后端代码,丰富了前端页面)
+=======
+@app.route('/getAnimeInfo', methods=["POST", 'OPTIONS'])
+@cross_origin()
+def anime_info():
+    req = request.get_data(as_text=True)
+    keyword = json.loads(req)['keyword']
+    with open('backend.txt', 'a+', encoding="utf-8") as f:
+        print("FuzzySearch: ", keyword, file=f)
+    ans = {'valid': 'true', 'tags': {}}
+    return json.dumps(ans)
+
+
+>>>>>>> d68cb92 (Frontend complete??)
 @app.route('/query', methods=["POST", 'OPTIONS'])
 @cross_origin()
 def query():

@@ -26,8 +26,8 @@ const Homepage = () => {
         <div className="homepage-top"/>
         <div className="homepage-mid">
             <div className="homepage-logo"/>
-            <div className="homepage-search">
-                <Search placeholder={placeholder} onSearch={onSearch} onKeyDown={onKeyDownChange} onChange={(e)=>{setKeyword(e.target.value)}} suffix={enterButton} />
+            <div className="homepage-search-container">
+                <Search className="homepage-search" size="large" placeholder={placeholder} onSearch={onSearch} onKeyDown={onKeyDownChange} onChange={(e)=>{setKeyword(e.target.value)}} suffix={enterButton()} />
             </div>
         </div>
         <div className="homepage-bot"/>

@@ -65,15 +65,11 @@ const BeforeSearch = () => {
 }
 
 const Searching = () => {
-    const allSortings = ["追番人数", "更新时间", "最高评分", "播放数量", "开播时间"];
+    const allSortings = ["追番人数", "最高评分", "播放数量", "开播时间"];
     const allTags = [{
         type: '类型',
         name: 'type',
         values: ['全部', '番剧', '电影', '其他']
-    }, {
-        type: '地区',
-        name: 'region',
-        values: ['全部', '日本', '中国', '美国', '其他']
     }, {
         type: '状态',
         name: 'status',
@@ -85,15 +81,15 @@ const Searching = () => {
     }, {
         type: '时间',
         name: 'time',
-        values: ['全部', '2021', '2020', '2019', '2018及以前']
+        values: ['全部', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013及以前']
     }, {
         type: '风格',
         name: 'style',
-        values: ['全部', '原创', '小说改', '漫画改', '游戏改']
+        values: ['原创', '游戏改', '小说改', '漫画改', '社团', '推理', '偶像', '智斗', '音乐', '声控', '魔法', '穿越', '运动', '泡面', '机战', 
+        '冒险', '恋爱', '治愈', '搞笑', '校园', '战斗', '热血', '日常']
     }, ];
     let [tags, alterTags] = useState({
         type: '全部',
-        region: '全部',
         status: '全部',
         season: '全部',
         time: '全部',
@@ -105,7 +101,6 @@ const Searching = () => {
     });
     let [entityTag, setEntityTag] = useState({
         type: '番剧',
-        region: '日本',
         status: '完结',
         season: '一月',
         time: '2019年',
@@ -162,9 +157,9 @@ const AppSearch = () => {
     let keyword = useParams().keyword || "";
     return (<div className = "searchpage pinkbackground">
             <SearchHeader keyword={keyword}/>
-            {keyword === "" && <BeforeSearch/>}
-            {keyword !== "" && <Searching/>}
-            <AppFooter styleClass="normal-footer" />
+                {keyword === "" && <BeforeSearch/>}
+                {keyword !== "" && <Searching/>}
+                <AppFooter styleClass="normal-footer" />
         </div>)
 
 }
