@@ -17,6 +17,17 @@ def fuzzy_search():
     return json.dumps(ans)
 
 
+@app.route('/getAnimeInfo', methods=["POST", 'OPTIONS'])
+@cross_origin()
+def anime_info():
+    req = request.get_data(as_text=True)
+    keyword = json.loads(req)['keyword']
+    with open('backend.txt', 'a+', encoding="utf-8") as f:
+        print("FuzzySearch: ", keyword, file=f)
+    ans = {'valid': 'true', 'tags': {}}
+    return json.dumps(ans)
+
+
 @app.route('/query', methods=["POST", 'OPTIONS'])
 @cross_origin()
 def query():

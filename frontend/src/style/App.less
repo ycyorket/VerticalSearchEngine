@@ -1,6 +1,7 @@
 @import "Homepage.less";
 @import "Search.less";
 @import "constant.less";
+@import "Anime.less";
 
 .appheader-container{
     display: flex;
@@ -8,6 +9,7 @@
     height: 70px;
     background-color: @titlePink;
     padding: 0.5ch;
+    cursor: pointer;
     .appheader-logo{
         flex-grow: 1;
         background-image: url('../asset/icon.png');
@@ -43,7 +45,7 @@
 
 .appfooter{
     text-align: center;
-    line-height: 2em;
+    line-height: 1.8em;
     background-color: inherit;
     a{
         padding: 0 1ch;
@@ -57,7 +59,6 @@
 
 .pinkbackground{
     width: 100vw;
-    height: 100vh;
     background-color: @contentPink;
     display: flex;
     flex-direction: column;
@@ -90,5 +91,31 @@
     }
     li{
         padding: 0.5ch;
+    }
+}
+
+.recommendation{
+    display: flex;
+    flex-direction: column;
+    .recommendation-title{
+        font-weight: bold;
+    }
+    .recommendation-title::before{
+        content: " ※ ";
+    }
+    .recommendation-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .recommendation-item{
+            max-width: 20%;
+            padding: 1ch;
+            .recommendation-poster{
+                width: 100%;
+            }
+            .recommendation-anime{
+                line-height: 3em;
+            }
+        }
     }
 }
