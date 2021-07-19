@@ -4,6 +4,8 @@ import SearchHeader from "../component/SearchHeader";
 import AppFooter from "../component/AppFooter";
 import history from "../util/history";
 import Recommendation from "../component/Recommendation";
+import axios from "axios";
+import { useState } from "react";
 
 const NoSearchResult = (props) => {
     const keyword = props.keyword;
@@ -21,6 +23,7 @@ const SorrySearch = () => {
     let keyword = useParams().keyword || "";
     if(keyword === "")
         history.push("/search");
+    
     return (<div className = "searchpage pinkbackground">
             <SearchHeader keyword={keyword}/>
             <NoSearchResult keyword={keyword}/>

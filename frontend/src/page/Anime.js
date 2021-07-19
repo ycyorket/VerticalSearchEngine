@@ -4,7 +4,10 @@ import SearchHeader from "../component/SearchHeader";
 import AppFooter from "../component/AppFooter";
 import Recommendation from "../component/Recommendation";
 import defaultPoster from "../asset/default-poster.jpeg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import constant from "../util/constant";
 
 const DataList = (props) => {
     const allData = props.allData;
@@ -108,7 +111,7 @@ const Anime = () => {
         "制作公司": "david production",
         "版权方": "david production",
         "是否完结": "已完结",
-        "声优": {'红细胞': '花泽香菜', '白细胞（中性粒细胞）': '前野智昭', '杀伤性T细胞/记忆T细胞': '小野大辅', '巨噬细胞': '井上喜久子', '血小板': '长绳麻理亚', '血小板（反帽子酱）': '石见舞菜香', '巨核细胞': '甲斐田裕子', '记忆细胞': '中村悠一', 'B细胞': '千叶翔也', '肥大细胞': '川澄绫子', 'NK细胞': '行成桃姬', '树突状细胞': '冈本信彦', '辅助T细胞': '樱井孝宏', '调节T细胞': '早见沙织', '一般细胞': '小林裕介', '乳酸菌（黑）': '吉田有里', '乳酸菌（红）': '高桥李依', '乳酸菌（熊猫）': '藤原夏海', '乳酸菌（斑）': '久保由利香', '癌细胞': '石田彰', '旁白': '能登麻美子'},
+        "角色声优": {'红细胞': '花泽香菜', '白细胞（中性粒细胞）': '前野智昭', '杀伤性T细胞/记忆T细胞': '小野大辅', '巨噬细胞': '井上喜久子', '血小板': '长绳麻理亚', '血小板（反帽子酱）': '石见舞菜香', '巨核细胞': '甲斐田裕子', '记忆细胞': '中村悠一', 'B细胞': '千叶翔也', '肥大细胞': '川澄绫子', 'NK细胞': '行成桃姬', '树突状细胞': '冈本信彦', '辅助T细胞': '樱井孝宏', '调节T细胞': '早见沙织', '一般细胞': '小林裕介', '乳酸菌（黑）': '吉田有里', '乳酸菌（红）': '高桥李依', '乳酸菌（熊猫）': '藤原夏海', '乳酸菌（斑）': '久保由利香', '癌细胞': '石田彰', '旁白': '能登麻美子'},
         "staff": {'原作': '清水茜（讲谈社《月刊少年天狼星》连载）', '监督': '小仓宏文', '系列构成、剧本': '柿原优子', '角色设计': '吉田隆彦', '细菌角色设计、道具设计、动作作画监督': '三室健太', '次要角色设计': '玉置敬子', '总作画监督': '吉田隆彦、玉置敬子、北尾胜', '美术监督': '细井友保（Studio Tulip）', '美术设定': '曾野由大', '色彩设计': '水野爱子', '摄影监督': '大岛由贵', '3DCG监督': '石井规仁', '编辑': '广濑清志（editz）', '音响监督': '明田川仁', '音响制作': 'Magic Capsule', '音乐': '末广健一郎、MAYUKO', '动画制作人': '若松刚', '动画制作': 'david production', '制作': 'ANIPLEX、讲谈社、david production'}
     }
     const defaultAnime2 = {
@@ -116,7 +119,20 @@ const Anime = () => {
         "日文名": "はたらく細胞 2期",
         "cover": defaultPoster
     }
-    let anime = defaultAnime;
+    let [anime, setAnime] = useState(defaultAnime);
+    let id = useParams().id || "";
+    useEffect(()=>{
+        axios.post('http://localhost:5000/getAnimeInfo', { "id": id }, { headers: { "Content-Type": "application/json" }})
+        .then( res => { 
+            console.log(res)
+            let data = res.data
+            data['cover'] = constant.urlProcess(data['cover'])
+            data['角色声优'] = constant.jsonify(data['角色声优'])
+            data['staff'] = constant.jsonify(data['staff'])
+            setAnime(data)
+        })
+        .catch( res => { console.log(res)})
+    }, [])
     return (<div className = "pinkbackground">
         <SearchHeader/>
         <div className = "animepage">
@@ -138,7 +154,7 @@ const Anime = () => {
                 </div>
             </div>
             <div className = "animepage-right">
-                <Seiyuu allData={anime['声优']}/>
+                <Seiyuu allData={anime['角色声优']}/>
                 <Staff allData={anime['staff']}/>
             </div>
         </div>

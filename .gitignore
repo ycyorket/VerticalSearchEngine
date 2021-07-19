@@ -1,4 +1,6 @@
 /.vscode
+/.vscode/*
+
 /spiders/failed*
 /spiders/ids*
 /spiders/infos*

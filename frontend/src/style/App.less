@@ -59,6 +59,7 @@
 
 .pinkbackground{
     width: 100vw;
+    min-height: 100vh;
     background-color: @contentPink;
     display: flex;
     flex-direction: column;
@@ -67,7 +68,7 @@
 
 .article{
     padding: 0 5ch;
-    height: 70%;
+    min-height: 70vh;
     h1{
         font-size: 1.5rem;
         line-height: 3em;
@@ -97,6 +98,7 @@
 .recommendation{
     display: flex;
     flex-direction: column;
+    
     .recommendation-title{
         font-weight: bold;
     }
@@ -106,15 +108,18 @@
     .recommendation-content{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        flex-wrap: wrap;
         .recommendation-item{
-            max-width: 20%;
+            max-width: 10em;
             padding: 1ch;
             .recommendation-poster{
                 width: 100%;
             }
             .recommendation-anime{
-                line-height: 3em;
+                padding: 0.8em 0;
+                line-height: 1.2em;
+                color: @titleGrey;
+                text-align: center;
             }
         }
     }
