@@ -41,6 +41,21 @@ def get_anime_by_corp(corp):
     print(res)
 
 
+def get_all_copyrights():
+    query = {
+        'size': 0,
+        'aggs': {
+            '版权方': {
+                'terms': {'field': '版权方', 'size': 20}
+            },
+        },
+    }
+    res = es.search(index='bangumi', body=query)['aggregations']
+    # res = [item['key'] for item in res]
+    # print(res)
+    return res
+
+
 def get_all_anime_ids():
     query = {
         'size': 0,
@@ -68,6 +83,21 @@ def get_anime_info_by_id(id):
     return res
 
 
+def get_anime_info_by_cn_name(name, size=5):
+    query = {
+        'size': size,
+        'query': {
+            'match': {
+                '中文名': name
+            }
+        }
+    }
+    res = es.search(index=index_name, body=query)['hits']
+    res = [item['_source'] for item in res['hits']]
+    # print(res)
+    return res
+
+
 def get_anime_by_director(director):
     query = {
         'query': {
@@ -82,7 +112,7 @@ def get_anime_by_director(director):
     return res
 
 
-def get_anime_by_conditions(conditions:dict):
+def get_anime_by_conditions(conditions:dict, size=10):
     shoulds = []
     for key in conditions.keys():
         should = []
@@ -90,6 +120,7 @@ def get_anime_by_conditions(conditions:dict):
             should.append({'match':{key: value}})
         shoulds.append({'bool': {'should': should}})
     query_body = {
+        'size': size,
         'query': {
             'bool':{'must': shoulds}
         }
@@ -127,9 +158,29 @@ def get_anime_by_conditions(conditions:dict):
     return res
 
 
+def get_suggestion(name, fields=None):
+    if fields is None:
+        fields = ['中文名']
+    query = {
+        'size': 10,
+        'query': {
+            'multi_match': {
+                'query': name,
+                'fields': fields
+            }
+        }
+    }
+    res = es.search(index=index_name, body=query)['hits']['hits']
+    res = [item['_source']['name'] for item in res]
+    return res
+
+
+def print_as_pretty_json(data):
+    print(json.dumps(data, ensure_ascii=False, indent=4))
+
+
 if __name__ == '__main__':
     conditions = {
-        '中文名': ['鬼灭之刃'],
-        '季度/月份': ['1月', '4月', '10月']
+        '中文名': ['的']
     }
-    get_anime_by_conditions(conditions)
+    print_as_pretty_json(get_anime_info_by_cn_name('鬼灭'))
