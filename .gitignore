@@ -1,5 +1,5 @@
-/.vscode
-/spiders/failed*
-/spiders/ids*
-/spiders/infos*
-/spiders/cleaned.json
+.vscode
+spiders/failed*
+spiders/ids*
+spiders/infos*
+spiders/cleaned.json
