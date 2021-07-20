@@ -8,11 +8,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import constant from "../util/constant";
+import context from "../util/context";
 
 const DataList = (props) => {
     const allData = props.allData;
     let viewCount = allData['播放量'] || NaN;
-    let subscriberCount = allData['追番人数'] || NaN;
+    let subscriberCount = allData['追番'] || NaN;
     let score = allData['评分'] || NaN;
     let noData = isNaN(viewCount) && isNaN(subscriberCount) && isNaN(score);
     const Datum = (props) => {
@@ -29,7 +30,7 @@ const DataList = (props) => {
             {noData && <div className="animepage-data-info">暂无番剧数据</div>}
             {!noData && <div className="animepage-datalist">
                 <Datum name="总播放" value={viewCount} default="暂无播放量数据"/>
-                <Datum name="追番人数" value={subscriberCount} default="暂无追番数据"/>
+                <Datum name="追番" value={subscriberCount} default="暂无追番数据"/>
                 <Datum name="评分" value={score} default="暂无评分数据"/>
             </div>}
         </div>
@@ -43,8 +44,9 @@ const InfoList = (props) => {
             <ul className="animepage-infolist">
                 {allData['开播时间']&&<li className="animepage-infolist-item">开播时间：{allData['开播时间']}</li>} 
                 {allData['是否完结']&&<li className="animepage-infolist-item">状态：{allData['是否完结']}</li>} 
+                {allData['话数']&&<li className="animepage-infolist-item">话数：{allData['话数']}</li>}  
                 {allData['制作公司']&&<li className="animepage-infolist-item">制作公司：{allData['制作公司']}</li>} 
-                {allData['版权方']&&<li className="animepage-infolist-item">版权方：{allData['版权方']}</li>} 
+                {allData['版权方']&&<li className="animepage-infolist-item">版权方：{allData['版权方']}</li>}
             </ul>   
         </div>
     )
@@ -120,19 +122,24 @@ const Anime = () => {
         "cover": defaultPoster
     }
     let [anime, setAnime] = useState(defaultAnime);
+    let [tags, setTags] = useState([]);
+    let [requested, setRequested] = useState(false);
     let id = useParams().id || "";
+    const AnimeContext = context['anime'];
     useEffect(()=>{
         axios.post('http://localhost:5000/getAnimeInfo', { "id": id }, { headers: { "Content-Type": "application/json" }})
         .then( res => { 
-            console.log(res)
             let data = res.data
             data['cover'] = constant.urlProcess(data['cover'])
             data['角色声优'] = constant.jsonify(data['角色声优'])
             data['staff'] = constant.jsonify(data['staff'])
+            console.log(data)
             setAnime(data)
+            setTags(data['tag'])
+            setRequested(true)
         })
         .catch( res => { console.log(res)})
-    }, [])
+    }, [id])
     return (<div className = "pinkbackground">
         <SearchHeader/>
         <div className = "animepage">
@@ -150,7 +157,9 @@ const Anime = () => {
                     </div>
                 </div>
                 <div className="animepage-recommendation">
-                    <Recommendation/>
+                    <AnimeContext.Provider value={{tags: tags, name: anime['name']}}>
+                        {requested&&<Recommendation/>}
+                    </AnimeContext.Provider>
                 </div>
             </div>
             <div className = "animepage-right">

@@ -8,6 +8,8 @@ const constant = {
         return cover
     },
     jsonify: function(sentence){
+        if(!sentence)
+            return
         let arr = sentence.split('\n')
         arr = Array.from(arr)
         let res = {}

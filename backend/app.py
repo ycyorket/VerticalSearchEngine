@@ -49,7 +49,7 @@ def query():
     keyword = json.loads(req)['keyword']
     # tags = json.loads(req)['tags']
     # log("Query: ", keyword)
-    res = get_anime_info_by_cn_name(keyword, size=6)
+    res = get_anime_info_by_cn_name(keyword, size=16)
     return json.dumps(res, ensure_ascii=False)
 
 

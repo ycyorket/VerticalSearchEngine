@@ -2,7 +2,7 @@
 
 .homepage{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: @titlePink;
     display: flex;
     flex-direction: column;
@@ -10,38 +10,53 @@
     padding: 5vh 5vw;
     .homepage-top{
         background-image: url("../asset/cloud.png");
-        flex-grow: 1;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: top left;
+        height: 4em;
     }
 
     .homepage-mid{
-        flex-grow: 5;
         display: flex;
         flex-direction: column;
+        min-width: 90%;
         .homepage-logo{
             background-image: url("../asset/logo.png");
-            flex-grow: 2;
+            height: 10em;
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
         }
         .homepage-search-container{
-            flex-grow: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             .homepage-search{
-                height: 4em;
                 width: 75%;
+            }
+            .homepage-search-result{
+                min-width: 75%;
+                .homepage-search-list{
+                    position: absolute;
+                    width: 67.5%;
+                    .homepage-search-item{
+                        height: 3em;
+                        text-indent: 2em;
+                        background-color: white;
+                        line-height: 3em;
+                        transition: width 0.5s;
+                    }
+                    .homepage-search-item:hover{
+                        background-color: @backgroundGrey;
+                    }
+                }
             }
         }
     }
 
     .homepage-bot{
         background-image: url("../asset/tree.png");
-        flex-grow: 3;
+        height: 10em;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: bottom right;

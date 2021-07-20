@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useContext }  from "react";
 import history from "../util/history";
 import defaultPoster from "../asset/default-poster.jpeg";
 import axios from 'axios';
-import { useState } from "react";
 import constant from "../util/constant";
-import { useEffect } from "react";
+import context from "../util/context";
 
 const Recommendation = (props) => {
     const defaultRecommendation = {
@@ -12,22 +11,24 @@ const Recommendation = (props) => {
         name: '工作细胞',
         id: '2333'
     }
-    let [recommendations, setRecommendations] = useState(props.allData || [defaultRecommendation, defaultRecommendation, defaultRecommendation, defaultRecommendation, defaultRecommendation])
+    const {name, tags} = useContext(context.anime);
+    const [recommendations, setRecommendations] = useState(props.allData || [defaultRecommendation, defaultRecommendation, defaultRecommendation, defaultRecommendation, defaultRecommendation])
 
     useEffect(()=>{
-        axios.post('http://localhost:5000/recommend', { "tags": [] }, { headers: { "Content-Type": "application/json" }})
+        axios.post('http://localhost:5000/recommend', { "tags": tags || []}, { headers: { "Content-Type": "application/json" }})
         .then( res => { 
             let data = res.data
             data.forEach(item => {
                 item['cover'] = constant.urlProcess(item['cover'])       
             });
+            data = data.filter((item)=>{return item['name'] !== name});
             setRecommendations(data.slice(0, 5))
+            console.log(name, tags, data)
         })
         .catch( res => { console.log(res)})
-    }, [])
+    }, [name, tags])
     
     let i = 0;
-    recommendations = props.recommendations || recommendations;
 
     return (
         <div className="recommendation">

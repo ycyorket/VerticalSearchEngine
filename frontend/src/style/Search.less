@@ -37,11 +37,12 @@
                 }
                 .searchpage-tagbar-container{
                     display: flex;
+                    flex-wrap: wrap;
                     .searchpage-tagbar-tag{
                         background-color: @tagGreen;
-                        margin: 0 1ch;
+                        margin: 0.5ch 1ch;
                         line-height: 2em;
-                        padding: 1ch;
+                        padding: 0.5ch;
                         color: grey;
                     }
                 }
@@ -49,9 +50,10 @@
 
             .searchpage-sortbar{
                 display: flex;
-                padding: 0 2ch;
+                padding: 0.5ch 2ch;
                 .sortingbar{
                     display: flex;
+                    flex-wrap: wrap;
                     .sortingbox{
                         color: grey;
                         margin: 0 1ch;
@@ -83,14 +85,27 @@
                     display: flex;
                     flex-wrap: wrap;
                     .result-item{
-                        margin: 1ch;
-                        padding: 1ch;
+                        margin: 0.5ch 1ch;
+                        padding: 0.5ch 1ch;
                         max-width: 11em;
+                        min-height: 16em;
+                        display: flex;
+                        cursor: pointer;
+                        flex-direction: column;
                         .result-poster{
                             width: 100%;
+                            display: flex;
+                            height: 13em;
+                            overflow: hidden;
+                            align-items: center;
+                            .result-poster-img{
+                                width: 100%;
+                            }
                         }
                         .result-title{
-                            line-height: 3em;
+                            font-weight: bold;
+                            min-height: 3em;
+                            font-size: 1em;
                         }
                     }
                 }
