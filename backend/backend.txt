@@ -271,3 +271,93 @@ AssociatedWordSearch:
 AssociatedWordSearch:  d
 AssociatedWordSearch:  de
 AssociatedWordSearch:  的
+AssociatedWordSearch:  g
+AssociatedWordSearch:  gu
+AssociatedWordSearch:  gui
+AssociatedWordSearch:  gu
+AssociatedWordSearch:  g
+AssociatedWordSearch:  
+AssociatedWordSearch:  g
+AssociatedWordSearch:  gu
+AssociatedWordSearch:  
+AssociatedWordSearch:  g
+AssociatedWordSearch:  gu
+AssociatedWordSearch:  gui
+AssociatedWordSearch:  gui'm
+AssociatedWordSearch:  gui'mi
+AssociatedWordSearch:  gui'mie
+AssociatedWordSearch:  鬼灭
+getAnimeInfo:  291494
+Recommend:  []
+getAnimeInfo:  b22718131
+Recommend:  ['漫画改', '战斗', '热血', '声控']
+getAnimeInfo:  b900
+Recommend:  ['奇幻', '战斗', '热血', '声控']
+getAnimeInfo:  b28231850
+Recommend:  ['奇幻', '声控', '战斗']
+getAnimeInfo:  b2725
+Recommend:  ['奇幻', '战斗', '声控', '原创']
+getAnimeInfo:  b113852
+Recommend:  ['奇幻', '战斗', '声控', '原创']
+getAnimeInfo:  b28231850
+Recommend:  ['奇幻', '声控', '战斗']
+AssociatedWordSearch:  g
+AssociatedWordSearch:  gu
+AssociatedWordSearch:  gui
+AssociatedWordSearch:  gui'm
+AssociatedWordSearch:  gui'mi
+AssociatedWordSearch:  gui'mie
+AssociatedWordSearch:  gui'mi'e'z
+AssociatedWordSearch:  gui'mi'e'zh
+AssociatedWordSearch:  gui'mi'e'zhi
+AssociatedWordSearch:  gui'mie'zhi'e
+AssociatedWordSearch:  gui'mi'e'zhi
+AssociatedWordSearch:  gui'mie'zhi'r
+AssociatedWordSearch:  gui'mie'zhi're
+AssociatedWordSearch:  gui'mie'zhi'ren
+AssociatedWordSearch:  鬼灭之刃
+YES!
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+Recommend:  []
+Recommend:  []
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+Recommend:  []
+getAnimeInfo:  b102392
+Recommend:  ['搞笑', '战斗', '日常', '声控']
+Recommend:  []
+getAnimeInfo:  337771
+Recommend:  []
+AssociatedWordSearch:  d
+AssociatedWordSearch:  de
+AssociatedWordSearch:  的
+AssociatedWordSearch:  
+AssociatedWordSearch:  a
+AssociatedWordSearch:  a'b
+AssociatedWordSearch:  ab
+AssociatedWordSearch:  abc
+getAnimeInfo:  278815
+Recommend:  []
+YES!
+AssociatedWordSearch:  a
+AssociatedWordSearch:  aa
+AssociatedWordSearch:  a
+AssociatedWordSearch:  
+AssociatedWordSearch:  a
+AssociatedWordSearch:  ab
+AssociatedWordSearch:  abc
+getAnimeInfo:  328140
+Recommend:  []
+getAnimeInfo:  278815
+Recommend:  []
+getAnimeInfo:  278815
+Recommend:  []

@@ -74,7 +74,7 @@ const Searching = (props) => {
     });
     const [entity, setEntity] = useState({ type: "番剧", value: "工作细胞"});
     const [entityTag, setEntityTag] = useState(['番剧', '完结', '一月', '2019年', '漫画改'])
-    const [chosen, altChosen] = useState("追番人数")
+    const [chosen, altChosen] = useState("无")
     const [ascend, altAscend] = useState(false)
     const sortings = (chosen, ascend) => {
         const at = (a, key) => {return key==='年份'? (parseInt(a['年份']) * 100 + parseInt(a['季度/月份'].split('月')[0])): a[key]}
@@ -196,7 +196,7 @@ const Searching = (props) => {
             });
             if(keyword!==''){
                 if(data.length > 0){
-                    setResults(data.sort(sortings(chosen, ascend)))
+                    setResults(data)
                     setRes(data)
                     setEntity({
                         type: "番剧",
